@@ -7,9 +7,11 @@ Claude Codeのmodを2つ置いています。どちらも、入れるだけで�
 | [limit-meter](./limit-meter) | 利用上限（5時間枠と週の枠）の使った割合とリセットの時刻を、入力欄の上に出します。上限が近づくと右上に知らせが出て、Claudeにも作業を区切るよう伝えます |
 | [secret-mask](./secret-mask) | コマンドの結果や読んだファイルに混じったAPIキーやパスワードを、Claudeが読む前に`[MASKED]`に置き換えます |
 
+secret-maskは安全網です。`.env`は、先にClaude Codeの設定でClaudeに読ませないようにしてください。設定の書き方は[secret-maskの説明](./secret-mask/README.md)にあります。
+
 ## 入れ方
 
-Claude Code 2.1.287以降で、次の3行を打ちます。
+Claude Code 2.1.287以降で打つのは、次の3行です。
 
 ```
 /plugin marketplace add shoujiki-panman/claude-code-mods
@@ -17,7 +19,7 @@ Claude Code 2.1.287以降で、次の3行を打ちます。
 /plugin install secret-mask@shoujiki-panman-mods
 ```
 
-入れたあと、Claude Codeを起動し直すと読み込まれます。止めるときや外すときも`/plugin`から操作します。
+入れたあと、Claude Codeを起動し直すと読み込まれます。止めるときや外すときの入り口も`/plugin`です。
 
 1回だけ試したいときは、リポジトリを手元に置いて`--plugin-dir`で起動します。
 

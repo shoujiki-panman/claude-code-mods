@@ -1,6 +1,6 @@
 # secret-mask
 
-コマンドの結果や読んだファイルに混じったAPIキーやパスワードを、Claudeが読む前に`[MASKED]`に置き換えるmodです。
+コマンドの結果や読んだファイルに混じったAPIキーやパスワードを、Claudeが読む前に`[MASKED]`に置き換えるmodです。たとえば`env`の結果に混じったキーは、Claudeには次のように届きます。
 
 ```
 OPENAI_API_KEY=sk-[MASKED]
@@ -8,6 +8,20 @@ DB_PASSWORD=[MASKED]
 DATABASE_URL=postgres://app:[MASKED]@localhost:5432/shop
 MAX_TOKENS=4096
 ```
+
+## まず、.envは読ませない設定に
+
+APIキーを守る基本は、`.env`をClaudeに読ませないことです。`.claude/settings.json`に次のように書くと、ClaudeはReadツールでも`cat`でも`.env`を読めなくなります。
+
+```json
+{
+  "permissions": {
+    "deny": ["Read(./.env)", "Read(./.env.*)"]
+  }
+}
+```
+
+secret-maskは、それでも混じるキーのための安全網です。たとえば、PATHを確かめるつもりで`env`を実行させると、環境変数に入れたキーも一緒にClaudeに渡ります。
 
 ## 伏せるもの
 
@@ -19,7 +33,7 @@ MAX_TOKENS=4096
 | 認証のヘッダー | `Authorization: Bearer ...` |
 | 秘密鍵 | `-----BEGIN ... PRIVATE KEY-----`から`END`まで |
 
-キーは見分けがつくよう、`sk-`や`ghp_`のような頭の部分だけ残します。伏せたときは、結果の最後に「値を読まずに使う方法を選んで」という一文を添えて、Claudeに伝えます。
+キーは見分けがつくよう、`sk-`や`ghp_`のような頭の部分だけ残します。伏せたときは、結果の最後に「値を読まずに使う方法を選んで」という一文を添えて、Claudeに伝える仕組みです。
 
 ## 伏せないもの
 
