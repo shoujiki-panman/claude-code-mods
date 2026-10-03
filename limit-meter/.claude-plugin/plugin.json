@@ -1,0 +1,7 @@
+{
+  "name": "limit-meter",
+  "version": "0.1.0",
+  "description": "利用上限（5時間枠と週の枠）の使った割合とリセットの時刻を入力欄の上に出し、上限が近づいたら知らせる",
+  "author": { "name": "shoujiki-panman" },
+  "types": "./types/index.d.ts"
+}

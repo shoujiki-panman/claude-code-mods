@@ -1,0 +1,21 @@
+{
+  "name": "shoujiki-panman-mods",
+  "owner": {
+    "name": "shoujiki-panman"
+  },
+  "metadata": {
+    "description": "Claude Codeのmod。利用上限のメーターと、APIキーの伏せ字"
+  },
+  "plugins": [
+    {
+      "name": "limit-meter",
+      "source": "./limit-meter",
+      "description": "利用上限（5時間枠と週の枠）の使った割合とリセットの時刻を入力欄の上に出し、上限が近づいたら知らせる"
+    },
+    {
+      "name": "secret-mask",
+      "source": "./secret-mask",
+      "description": "コマンドの結果や読んだファイルに混じったAPIキー・パスワードを、Claudeが読む前に伏せる"
+    }
+  ]
+}

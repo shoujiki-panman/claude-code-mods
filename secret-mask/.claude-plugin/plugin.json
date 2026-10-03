@@ -1,0 +1,6 @@
+{
+  "name": "secret-mask",
+  "version": "0.1.0",
+  "description": "コマンドの結果や読んだファイルに混じったAPIキー・パスワードを、Claudeが読む前に伏せる",
+  "author": { "name": "shoujiki-panman" }
+}
